@@ -159,6 +159,11 @@ Plug 'camelcasemotion'
 " }}}
 
 Plug 'easymotion/vim-easymotion'
+" {{{
+" Move to word
+map  <Leader>w <Plug>(easymotion-bd-w)
+nmap <Leader>w <Plug>(easymotion-overwin-w)
+" }}}
 
 " Syntax files
 Plug 'aklt/plantuml-syntax'
@@ -184,16 +189,43 @@ Plug 'honza/vim-snippets'
 
 Plug 'haya14busa/incsearch.vim'
 " {{{
-map /  <Plug>(incsearch-forward)
-map ?  <Plug>(incsearch-backward)
-map g/ <Plug>(incsearch-stay)
+  map /  <Plug>(incsearch-forward)
+  map ?  <Plug>(incsearch-backward)
+  map g/ <Plug>(incsearch-stay)
+" }}}
+
+Plug 'haya14busa/incsearch-fuzzy.vim'
+" {{{
+  function! s:config_fuzzyall(...) abort
+    return extend(copy({
+    \   'converters': [
+    \     incsearch#config#fuzzy#converter(),
+    \     incsearch#config#fuzzyspell#converter()
+    \   ],
+    \ }), get(a:, 1, {}))
+  endfunction
+
+  noremap <silent><expr> / incsearch#go(<SID>config_fuzzyall())
+  noremap <silent><expr> ? incsearch#go(<SID>config_fuzzyall({'command': '?'}))
+  noremap <silent><expr> g? incsearch#go(<SID>config_fuzzyall({'is_stay': 1}))
 " }}}
 
 Plug 'haya14busa/incsearch-easymotion.vim'
 " {{{
-map z/ <Plug>(incsearch-easymotion-/)
-map z? <Plug>(incsearch-easymotion-?)
-map zg/ <Plug>(incsearch-easymotion-stay)
+  function! s:config_easyfuzzymotion(...) abort
+    return extend(copy({
+    \   'converters': [
+    \     incsearch#config#fuzzy#converter(),
+    \     incsearch#config#fuzzyspell#converter()
+    \   ],
+    \   'modules': [incsearch#config#easymotion#module({'overwin': 1})],
+    \   'keymap': {"\<CR>": '<Over>(easymotion)'},
+    \   'is_expr': 0,
+    \   'is_stay': 1
+    \ }), get(a:, 1, {}))
+  endfunction
+
+  noremap <silent><expr> z/ incsearch#go(<SID>config_easyfuzzymotion())
 " }}}
 
 call plug#end()
@@ -314,3 +346,7 @@ hi GitGutterChange   ctermfg=0 ctermbg=4 guibg='blue'
 " hi Search cterm=NONE ctermfg=black ctermbg=white
 hi Search cterm=NONE ctermfg=red ctermbg=black
 hi IncSearch cterm=NONE ctermfg=red ctermbg=black
+
+" Easech
+hi ESearchMatch cterm=NONE ctermfg=red ctermbg=black
+"hi ESearchMatch ctermfg=black ctermbg=white guifg=#000000 guibg=#E6E6FA

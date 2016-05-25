@@ -1,8 +1,16 @@
-call plug#begin('~/.vim/plugged')
+" Autoinstall vim-plug {{{
+if empty(glob('~/.config/nvim/autoload/plug.vim'))
+  silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall
+endif
+" }}}
 
 runtime macros/matchit.vim
-
 let mapleader = ","
+set hidden
+
+call plug#begin('~/.config/nvim/plugged')
 
 " Nerdtree
 Plug 'scrooloose/nerdtree'
@@ -192,6 +200,14 @@ Plug 'haya14busa/incsearch.vim'
   map /  <Plug>(incsearch-forward)
   map ?  <Plug>(incsearch-backward)
   map g/ <Plug>(incsearch-stay)
+
+  let g:incsearch#auto_nohlsearch = 1
+  map n  <Plug>(incsearch-nohl-n)
+  map N  <Plug>(incsearch-nohl-N)
+  map *  <Plug>(incsearch-nohl-*)
+  map #  <Plug>(incsearch-nohl-#)
+  map g* <Plug>(incsearch-nohl-g*)
+  map g# <Plug>(incsearch-nohl-g#)
 " }}}
 
 Plug 'haya14busa/incsearch-fuzzy.vim'
@@ -205,9 +221,12 @@ Plug 'haya14busa/incsearch-fuzzy.vim'
     \ }), get(a:, 1, {}))
   endfunction
 
-  noremap <silent><expr> / incsearch#go(<SID>config_fuzzyall())
-  noremap <silent><expr> ? incsearch#go(<SID>config_fuzzyall({'command': '?'}))
-  noremap <silent><expr> g? incsearch#go(<SID>config_fuzzyall({'is_stay': 1}))
+  map / <Plug>(incsearch-fuzzyspell-/)
+  map ? <Plug>(incsearch-fuzzyspell-?)
+  map g/ <Plug>(incsearch-fuzzyspell-stay)
+  "noremap <silent><expr> / incsearch#go(<SID>config_fuzzyall())
+  "noremap <silent><expr> ? incsearch#go(<SID>config_fuzzyall({'command': '?'}))
+  "noremap <silent><expr> g? incsearch#go(<SID>config_fuzzyall({'is_stay': 1}))
 " }}}
 
 Plug 'haya14busa/incsearch-easymotion.vim'

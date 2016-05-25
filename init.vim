@@ -2,14 +2,29 @@ call plug#begin('~/.vim/plugged')
 
 runtime macros/matchit.vim
 
+let mapleader = ","
+
 " Nerdtree
 Plug 'scrooloose/nerdtree'
+" {{{
+  map <Leader>n <plug>NERDTreeTabsToggle<CR>
+  map <Leader>1 :NERDTreeFind<CR>
+  " Automatically close NERDTree when opening a file
+  let NERDTreeQuitOnOpen=1
+" }}}
+
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'taiansu/nerdtree-ag'
 
 " Git
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
+" {{{
+  let g:gitgutter_sign_added = '+'
+  let g:gitgutter_sign_modified = '!'
+  let g:gitgutter_sign_removed = '-'
+  let g:gitgutter_sign_modified_removed = '<'
+" }}}
 
 " Comments
 Plug 'scrooloose/nerdcommenter'
@@ -23,6 +38,47 @@ Plug 'sickill/vim-pasta'
 
 " RUBY
 Plug 'tpope/vim-rails'
+" {{{
+  let g:rails_projections = {
+        \ "app/services/drivy/*.rb": {
+        \   "command": "service",
+        \   "template": "class %S < Drivy::Service\nend",
+        \   "test": [
+        \     "spec/services/%s_spec.rb"
+        \   ]
+        \ },
+        \ "spec/services/*_spec.rb": {
+        \   "alternate": 'app/services/drivy/%s.rb'
+        \ },
+        \ "app/forms/*.rb": {
+        \   "command": "form",
+        \   "template": "class %S < Drivy::Form\nend",
+        \   "test": [
+        \     "spec/forms/%s_spec.rb"
+        \   ]
+        \ },
+        \ "spec/factories/*.rb": {
+        \   "command": "factory",
+        \   "template": "FactoryGirl.define do\n factory: %S do\n end\n \nend",
+        \ },
+        \ "app/assets/javascripts/backbone/apps/*_app.js.coffee":  {
+        \   "command": "jmodule",
+        \ },
+        \ "app/assets/javascripts/backbone/entities/*.js.coffee":  {
+        \   "command": "jentity",
+        \ },
+        \ "app/assets/javascripts/backbone/apps/*_controller.js.coffee":  {
+        \   "command": "jcontroller",
+        \ },
+        \ "app/assets/javascripts/backbone/apps/*_view.js.coffee":  {
+        \   "command": "jview",
+        \ },
+        \ }
+
+  command! Rroutes :e config/routes.rb
+  command! RTroutes :tabe config/routes.rb
+" }}}
+
 Plug 'tpope/vim-surround'
 Plug 'ecomba/vim-ruby-refactoring'
 Plug 'tpope/vim-bundler'
@@ -41,6 +97,11 @@ Plug 'Raimondi/delimitMate'
 " CtrlP extension for fuzzy-search in tag matches.
 Plug 'kien/ctrlp.vim'
 Plug 'ivalkeen/vim-ctrlp-tjump'
+" {{{
+  nnoremap <c-]> :CtrlPtjump<cr>
+  vnoremap <c-]> :CtrlPtjumpVisual<cr>
+  let g:ctrlp_tjump_shortener = ['/home/.*/gems/', '.../']
+" }}}
 
 " better-looking, more functional vim statuslines
 Plug 'bling/vim-airline'
@@ -48,10 +109,29 @@ Plug 'bling/vim-airline'
 
 " sidebar that displays the ctags-generated tags of the current file
 Plug 'majutsushi/tagbar'
+" {{{
+  nmap <F8> :TagbarToggle<CR>
+  nmap <F9> :TagbarOpenAutoClose<CR>
+
+  let g:tagbar_type_ruby = {
+        \ 'kinds' : [
+        \ 'm:modules',
+        \ 'c:classes',
+        \ 'd:describes',
+        \ 'C:contexts',
+        \ 'f:methods',
+        \ 'F:singleton methods'
+        \ ]
+        \ }
+" }}}
 
 " A vim plugin that simplifies the transition between multiline and
 " single-line code
 Plug 'AndrewRadev/splitjoin.vim'
+" {{{
+  nmap <Leader>s :SplitjoinSplit<CR>
+  nmap <Leader>j :SplitjoinJoin<CR>
+" }}}
 
 
 " Vim script for text filtering and alignment
@@ -69,7 +149,16 @@ Plug 'rking/ag.vim'
 
 " Motions
 Plug 'camelcasemotion'
-Plug 'Lokaltog/vim-easymotion'
+" {{{
+  map w <Plug>CamelCaseMotion_w
+  map b <Plug>CamelCaseMotion_b
+  map e <Plug>CamelCaseMotion_e
+  sunmap w
+  sunmap b
+  sunmap e
+" }}}
+
+Plug 'easymotion/vim-easymotion'
 
 " Syntax files
 Plug 'aklt/plantuml-syntax'
@@ -90,17 +179,33 @@ Plug 'isRuslan/vim-es6'
 " NeoVim/Vim plugin performing project-wide async search and replace, similar to SublimeText, Atom et al.
 Plug 'eugen0329/vim-esearch'
 
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+
+Plug 'haya14busa/incsearch.vim'
+" {{{
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+" }}}
+
+Plug 'haya14busa/incsearch-easymotion.vim'
+" {{{
+map z/ <Plug>(incsearch-easymotion-/)
+map z? <Plug>(incsearch-easymotion-?)
+map zg/ <Plug>(incsearch-easymotion-stay)
+" }}}
+
 call plug#end()
 
 
+" Settings
+
 filetype plugin indent on     " required!
 
-let mapleader = ","
 
 " Double jj in insert mode exits insert mode
 imap jj <Esc>
-
-colorscheme vividchalk
 
 " Use case insensitive search, except when using capital letters
 set ignorecase
@@ -155,6 +260,9 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 
+" yank to clipboard
+set clipboard=unnamed
+
 " Inserts the path of the currently edited file into a command
 " Command mode: Ctrl+P
 cmap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
@@ -168,100 +276,6 @@ nnoremap 2 :tabnext<CR>
 
 " Automatically removing all trailing whitespace
 autocmd BufWritePre * :%s/\s\+$//e
-
-" Plugin Customization
-map <Leader>n <plug>NERDTreeTabsToggle<CR>
-map <Leader>1 :NERDTreeFind<CR>
-
-" scrooloose/nerdtree
-" Automatically close NERDTree when opening a file
-let NERDTreeQuitOnOpen=1
-
-" airblade/vim-gitgutter
-hi GitGutterAdd      ctermfg=0 ctermbg=2 guibg='green'
-hi GItGutterDelete   ctermfg=0 ctermbg=1 guibg='red'
-hi GitGutterChange   ctermfg=0 ctermbg=4 guibg='blue'
-
-let g:gitgutter_sign_added = '+'
-let g:gitgutter_sign_modified = '!'
-let g:gitgutter_sign_removed = '-'
-let g:gitgutter_sign_modified_removed = '<'
-
-" highlight search term
-" hi Search cterm=NONE ctermfg=black ctermbg=white
-
-" AndrewRadev/splitjoin.vim
-nmap <Leader>s :SplitjoinSplit<CR>
-nmap <Leader>j :SplitjoinJoin<CR>
-
-" majutsushi/tagbar
-nmap <F8> :TagbarToggle<CR>
-nmap <F9> :TagbarOpenAutoClose<CR>
-
-let g:tagbar_type_ruby = {
-      \ 'kinds' : [
-      \ 'm:modules',
-      \ 'c:classes',
-      \ 'd:describes',
-      \ 'C:contexts',
-      \ 'f:methods',
-      \ 'F:singleton methods'
-      \ ]
-      \ }
-
-let g:rails_projections = {
-      \ "app/services/drivy/*.rb": {
-      \   "command": "service",
-      \   "template": "class %S < Drivy::Service\nend",
-      \   "test": [
-      \     "spec/services/%s_spec.rb"
-      \   ]
-      \ },
-      \ "spec/services/*_spec.rb": {
-      \   "alternate": 'app/services/drivy/%s.rb'
-      \ },
-      \ "app/forms/*.rb": {
-      \   "command": "form",
-      \   "template": "class %S < Drivy::Form\nend",
-      \   "test": [
-      \     "spec/forms/%s_spec.rb"
-      \   ]
-      \ },
-      \ "spec/factories/*.rb": {
-      \   "command": "factory",
-      \   "template": "FactoryGirl.define do\n factory: %S do\n end\n \nend",
-      \ },
-      \ "app/assets/javascripts/backbone/apps/*_app.js.coffee":  {
-      \   "command": "jmodule",
-      \ },
-      \ "app/assets/javascripts/backbone/entities/*.js.coffee":  {
-      \   "command": "jentity",
-      \ },
-      \ "app/assets/javascripts/backbone/apps/*_controller.js.coffee":  {
-      \   "command": "jcontroller",
-      \ },
-      \ "app/assets/javascripts/backbone/apps/*_view.js.coffee":  {
-      \   "command": "jview",
-      \ },
-      \ }
-" camelcasemotion
-map w <Plug>CamelCaseMotion_w
-map b <Plug>CamelCaseMotion_b
-map e <Plug>CamelCaseMotion_e
-sunmap w
-sunmap b
-sunmap e
-
-" ivalkeen/vim-ctrlp-tjump
-nnoremap <c-]> :CtrlPtjump<cr>
-vnoremap <c-]> :CtrlPtjumpVisual<cr>
-let g:ctrlp_tjump_shortener = ['/home/.*/gems/', '.../']
-
-" EXTRA
-
-" Edit routes
-command! Rroutes :e config/routes.rb
-command! RTroutes :tabe config/routes.rb
 command! Ctags :! ctags -R --extra=+f --exclude=.git --exclude=log *
 
 " Opens an edit command with the path of the currently edited file filled in
@@ -288,3 +302,15 @@ vmap <F2> ! boxes -drb -f ~/.boxes-config<CR>
 vmap <F3> ! html2haml<CR>
 
 command W w
+
+" Colors
+colorscheme vividchalk
+
+hi GitGutterAdd      ctermfg=0 ctermbg=2 guibg='green'
+hi GitGutterDelete   ctermfg=0 ctermbg=1 guibg='red'
+hi GitGutterChange   ctermfg=0 ctermbg=4 guibg='blue'
+
+" highlight search term
+" hi Search cterm=NONE ctermfg=black ctermbg=white
+hi Search cterm=NONE ctermfg=red ctermbg=black
+hi IncSearch cterm=NONE ctermfg=red ctermbg=black

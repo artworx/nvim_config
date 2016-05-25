@@ -247,6 +247,23 @@ Plug 'haya14busa/incsearch-easymotion.vim'
   noremap <silent><expr> z/ incsearch#go(<SID>config_easyfuzzymotion())
 " }}}
 
+Plug 'neomake/neomake'
+" {{{
+  autocmd! BufWritePost * Neomake
+" }}}
+
+Plug 'ludovicchabant/vim-gutentags'
+" {{{
+  let g:gutentags_exclude = [
+      \ '*.min.js',
+      \ '*html*',
+      \ 'jquery*.js',
+      \ '*/vendor/*',
+      \ '*/node_modules/*',
+      \ '*/migrate/*.rb'
+      \ ]
+" }}}
+
 call plug#end()
 
 
@@ -363,9 +380,9 @@ hi GitGutterChange   ctermfg=0 ctermbg=4 guibg='blue'
 
 " highlight search term
 " hi Search cterm=NONE ctermfg=black ctermbg=white
-hi Search cterm=NONE ctermfg=red ctermbg=black
-hi IncSearch cterm=NONE ctermfg=red ctermbg=black
+hi Search cterm=underline ctermfg=red ctermbg=black
+hi IncSearch cterm=underline ctermfg=red ctermbg=black
 
 " Easech
-hi ESearchMatch cterm=NONE ctermfg=red ctermbg=black
+hi ESearchMatch cterm=underline ctermfg=red ctermbg=black
 "hi ESearchMatch ctermfg=black ctermbg=white guifg=#000000 guibg=#E6E6FA

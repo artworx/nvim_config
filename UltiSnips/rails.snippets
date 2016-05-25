@@ -1,0 +1,11 @@
+snippet "\bpow(er)?" "power :model..." r
+power :${1:model} do
+  $0
+end
+endsnippet
+
+snippet "\bpow(er)?" "power :creatable_model, :updatable_model, :destroyable_model..." r
+power :creatable_${1:model}, :updatable_$1, :destroyable_$1 do
+  $0
+end
+endsnippet

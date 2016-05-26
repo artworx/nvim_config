@@ -264,6 +264,9 @@ Plug 'ludovicchabant/vim-gutentags'
       \ ]
 " }}}
 
+Plug 'mattn/webapi-vim'
+Plug 'mattn/gist-vim'
+
 call plug#end()
 
 

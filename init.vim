@@ -85,7 +85,7 @@ Plug 'tpope/vim-rails'
 
   command! Rroutes :e config/routes.rb
   command! RTroutes :tabe config/routes.rb
-  command! Evimconfig :e ~/.config/nvim/init.vim
+  command! Econfig :e ~/.config/nvim/init.vim
 " }}}
 
 Plug 'tpope/vim-surround'
@@ -267,6 +267,10 @@ Plug 'ludovicchabant/vim-gutentags'
 
 Plug 'mattn/webapi-vim'
 Plug 'mattn/gist-vim'
+Plug 'osyo-manga/vim-over'
+" {{{
+map <Leader>r # :OverCommandLine %s/\(<c-r>/\)/\1<CR>
+" }}
 
 call plug#end()
 

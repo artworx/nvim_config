@@ -85,6 +85,7 @@ Plug 'tpope/vim-rails'
 
   command! Rroutes :e config/routes.rb
   command! RTroutes :tabe config/routes.rb
+  command! Evimconfig :e ~/.config/nvim/init.vim
 " }}}
 
 Plug 'tpope/vim-surround'

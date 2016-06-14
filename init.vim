@@ -272,8 +272,21 @@ Plug 'osyo-manga/vim-over'
 map <Leader>r # :OverCommandLine %s/\(<c-r>/\)/\1<CR>
 " }}
 
-call plug#end()
+" .alma>li
+Plug 'mattn/emmet-vim'
 
+" increment dates
+Plug 'tpope/vim-speeddating'
+
+Plug 'AndrewRadev/sideways.vim'
+" {{
+nnoremap <c-h> :SidewaysLeft<cr>
+nnoremap <c-l> :SidewaysRight<cr>
+" }}
+
+Plug 'AndrewRadev/switch.vim'
+
+call plug#end()
 
 " Settings
 
@@ -378,6 +391,12 @@ vmap <F2> ! boxes -drb -f ~/.boxes-config<CR>
 vmap <F3> ! html2haml<CR>
 
 command W w
+
+silent execute "! mkdir -p ~/.vim/backup"
+silent execute "! mkdir -p ~/.vim/tmp"
+
+set backupdir=~/.vim/backup//
+set directory=~/.vim/tmp//
 
 " Colors
 colorscheme vividchalk

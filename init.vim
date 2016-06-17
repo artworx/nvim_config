@@ -26,6 +26,10 @@ Plug 'taiansu/nerdtree-ag'
 
 " Git
 Plug 'tpope/vim-fugitive'
+Plug 'shumphrey/fugitive-gitlab.vim'
+" {{{
+let g:fugitive_gitlab_domains = ['http://gitlab.pitechplus.com']
+" }}}
 Plug 'airblade/vim-gitgutter'
 " {{{
   let g:gitgutter_sign_added = '+'

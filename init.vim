@@ -19,6 +19,7 @@ Plug 'scrooloose/nerdtree'
   map <Leader>1 :NERDTreeFind<CR>
   " Automatically close NERDTree when opening a file
   let NERDTreeQuitOnOpen=1
+  let NERDTreeAutoDeleteBuffer = 1
 " }}}
 
 Plug 'jistr/vim-nerdtree-tabs'

@@ -38,6 +38,20 @@ Plug 'airblade/vim-gitgutter'
   let g:gitgutter_sign_removed = '-'
   let g:gitgutter_sign_modified_removed = '<'
 " }}}
+Plug 'Xuyuanp/nerdtree-git-plugin'
+" {{{
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "!",
+    \ "Staged"    : "+",
+    \ "Untracked" : "+",
+    \ "Renamed"   : "M",
+    \ "Unmerged"  : "!",
+    \ "Deleted"   : "!",
+    \ "Dirty"     : "!",
+    \ "Clean"     : "+",
+    \ "Unknown"   : "?"
+    \ }
+" }}}
 
 " Comments
 Plug 'scrooloose/nerdcommenter'
@@ -418,3 +432,13 @@ hi IncSearch cterm=underline ctermfg=red ctermbg=black
 " Easech
 hi ESearchMatch cterm=underline ctermfg=red ctermbg=black
 "hi ESearchMatch ctermfg=black ctermbg=white guifg=#000000 guibg=#E6E6FA
+
+" NERDTress Git File highlighting
+" with Xuyuanp/nerdtree-git-plugin
+function! NERDTreeHighlightFile(syn_match, m, fg, cterm)
+ exec 'autocmd filetype nerdtree highlight ' . a:syn_match .' cterm='. a:cterm .' ctermfg='. a:fg
+ exec 'autocmd filetype nerdtree syn match ' . a:syn_match .' #.*\[' . a:m . '\].*#'
+endfunction
+
+call NERDTreeHighlightFile('NERDTreeGitStatusModified', '!', '39', 'none')
+call NERDTreeHighlightFile('NERDTreeGitStatusUntracked', '+', '154', 'none')

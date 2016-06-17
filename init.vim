@@ -129,6 +129,7 @@ Plug 'ivalkeen/vim-ctrlp-tjump'
   nnoremap <c-]> :CtrlPtjump<cr>
   vnoremap <c-]> :CtrlPtjumpVisual<cr>
   let g:ctrlp_tjump_shortener = ['/home/.*/gems/', '.../']
+  let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 " }}}
 
 " better-looking, more functional vim statuslines

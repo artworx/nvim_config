@@ -212,6 +212,15 @@ Plug 'isRuslan/vim-es6'
 
 " NeoVim/Vim plugin performing project-wide async search and replace, similar to SublimeText, Atom et al.
 Plug 'eugen0329/vim-esearch'
+" {{{
+let g:esearch = {
+  \ 'adapter':    'ag',
+  \ 'backend':    'nvim',
+  \ 'out':        'win',
+  \ 'batch_size': 1000,
+  \ 'use':        ['visual', 'hlsearch', 'last'],
+  \}
+" }}}
 
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'

@@ -1,0 +1,33 @@
+snippet "fm" "FormattedMessage" r
+<FormattedMessage id="`!p snip.rv = snip.basename[:1].lower() + snip.basename[1:] or "untitled"`_${1:message}" defaultMessage="${VISUAL:""}"/>${0}
+endsnippet
+
+snippet "reducer" "FormattedMessage" r
+import * as types from "../actions/actionTypes";
+import initialState from "./initialState";
+
+export default function `!p snip.rv = snip.basename[:1].lower() + snip.basename[1:] or "untitled"`(state = initialState.`!p snip.rv = snip.basename[:1].lower() + snip.basename[1:] or "untitled"`, action) {
+	switch (action.type) {
+		case types.${1:action}:
+			break;
+
+		default:
+			return state;
+	}
+}
+endsnippet
+
+snippet "component" "FormattedMessage" r
+import React from "react";
+
+const ${1:`!p snip.rv = snip.basename`} = () => {
+  return (
+	<div>
+		`!p snip.rv = snip.basename`
+	</div>
+	);
+}
+
+export default ${1:`!p snip.rv = snip.basename`};
+
+endsnippet

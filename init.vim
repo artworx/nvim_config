@@ -280,6 +280,7 @@ Plug 'haya14busa/incsearch-easymotion.vim'
 Plug 'neomake/neomake'
 " {{{
   autocmd! BufWritePost * Neomake
+  autocmd! BufWritePost *.plantuml Neomake!
 " }}}
 
 Plug 'ludovicchabant/vim-gutentags'

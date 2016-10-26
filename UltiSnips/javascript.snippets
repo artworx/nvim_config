@@ -18,7 +18,7 @@ export default function `!p snip.rv = snip.basename[:1].lower() + snip.basename[
 endsnippet
 
 snippet "component" "FormattedMessage" r
-import React from "react";
+import React, {PropTypes} from "react";
 
 const ${1:`!p snip.rv = snip.basename`} = () => {
   return (
@@ -26,6 +26,9 @@ const ${1:`!p snip.rv = snip.basename`} = () => {
 		`!p snip.rv = snip.basename`
 	</div>
 	);
+};
+
+${1:`!p snip.rv = snip.basename`}.propTypes = {
 }
 
 export default ${1:`!p snip.rv = snip.basename`};

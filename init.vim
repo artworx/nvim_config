@@ -209,6 +209,7 @@ Plug 'ekalinin/Dockerfile.vim'
 " jade
 Plug 'digitaltoad/vim-pug'
 Plug 'isRuslan/vim-es6'
+Plug 'wlangstroth/vim-racket'
 
 " NeoVim/Vim plugin performing project-wide async search and replace, similar to SublimeText, Atom et al.
 Plug 'eugen0329/vim-esearch'
@@ -251,8 +252,8 @@ Plug 'haya14busa/incsearch-fuzzy.vim'
     \ }), get(a:, 1, {}))
   endfunction
 
-  map / <Plug>(incsearch-fuzzyspell-/)
-  map ? <Plug>(incsearch-fuzzyspell-?)
+  "map / <Plug>(incsearch-fuzzyspell-/)
+  "map ? <Plug>(incsearch-fuzzyspell-?)
   map g/ <Plug>(incsearch-fuzzyspell-stay)
   "noremap <silent><expr> / incsearch#go(<SID>config_fuzzyall())
   "noremap <silent><expr> ? incsearch#go(<SID>config_fuzzyall({'command': '?'}))

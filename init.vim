@@ -317,6 +317,9 @@ nnoremap <c-l> :SidewaysRight<cr>
 
 Plug 'AndrewRadev/switch.vim'
 
+" Show colors in css files
+Plug 'gorodinskiy/vim-coloresque'
+
 call plug#end()
 
 " Settings

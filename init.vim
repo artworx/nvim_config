@@ -320,6 +320,9 @@ Plug 'AndrewRadev/switch.vim'
 " Show colors in css files
 Plug 'gorodinskiy/vim-coloresque'
 
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+let g:deoplete#enable_at_startup = 1
+
 call plug#end()
 
 " Settings

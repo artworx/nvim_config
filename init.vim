@@ -174,7 +174,8 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-abolish'
 
 " front for ag, A.K.A. the_silver_searcher.
-Plug 'rking/ag.vim'
+" Plug 'rking/ag.vim'
+Plug 'albfan/ag.vim'
 
 " Motions
 Plug 'camelcasemotion'
@@ -323,6 +324,10 @@ Plug 'gorodinskiy/vim-coloresque'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 let g:deoplete#enable_at_startup = 1
 
+" Far.vim makes it easier to find and replace text through multiple files. It's inspired by fancy IDEs,
+" like IntelliJ and Eclipse, that provide cozy tools for such tasks.
+Plug 'brooth/far.vim'
+
 call plug#end()
 
 " Settings
@@ -450,6 +455,10 @@ hi IncSearch cterm=underline ctermfg=red ctermbg=black
 " Easech
 hi ESearchMatch cterm=underline ctermfg=red ctermbg=black
 "hi ESearchMatch ctermfg=black ctermbg=white guifg=#000000 guibg=#E6E6FA
+
+" spell
+hi clear SpellBad
+hi SpellBad cterm=underline ctermfg=yellow
 
 " NERDTress Git File highlighting
 " with Xuyuanp/nerdtree-git-plugin

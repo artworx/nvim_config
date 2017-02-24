@@ -328,9 +328,13 @@ let g:deoplete#enable_at_startup = 1
 " like IntelliJ and Eclipse, that provide cozy tools for such tasks.
 Plug 'brooth/far.vim'
 
+" Format JSON
+com! FormatJSON %!python -m json.tool
+
 call plug#end()
 
 " Settings
+set mouse=a
 
 filetype plugin indent on     " required!
 

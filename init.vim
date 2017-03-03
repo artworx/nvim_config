@@ -287,7 +287,7 @@ Plug 'neomake/neomake'
 
 Plug 'ludovicchabant/vim-gutentags'
 " {{{
-  let g:gutentags_exclude = [
+  let g:gutentags_ctags_exclude = [
       \ '*.min.js',
       \ '*html*',
       \ 'jquery*.js',

@@ -331,6 +331,11 @@ Plug 'brooth/far.vim'
 " Format JSON
 com! FormatJSON %!python -m json.tool
 
+" pandoc table style
+let g:table_mode_corner_corner='+'
+
+Plug 'dhruvasagar/vim-table-mode'
+
 call plug#end()
 
 " Settings

@@ -133,8 +133,8 @@ Plug 'ivalkeen/vim-ctrlp-tjump'
 " }}}
 
 " better-looking, more functional vim statuslines
+let g:airline_extensions = []
 Plug 'bling/vim-airline'
-
 
 " sidebar that displays the ctags-generated tags of the current file
 Plug 'majutsushi/tagbar'

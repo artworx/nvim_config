@@ -227,57 +227,57 @@ let g:esearch = {
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
-"Plug 'haya14busa/incsearch.vim'
-"" {{{
-  "map /  <Plug>(incsearch-forward)
-  "map ?  <Plug>(incsearch-backward)
-  "map g/ <Plug>(incsearch-stay)
+Plug 'haya14busa/incsearch.vim'
+" {{{
+  map /  <Plug>(incsearch-forward)
+  map ?  <Plug>(incsearch-backward)
+  map g/ <Plug>(incsearch-stay)
 
-  "let g:incsearch#auto_nohlsearch = 1
-  "map n  <Plug>(incsearch-nohl-n)
-  "map N  <Plug>(incsearch-nohl-N)
-  "map *  <Plug>(incsearch-nohl-*)
-  "map #  <Plug>(incsearch-nohl-#)
-  "map g* <Plug>(incsearch-nohl-g*)
-  "map g# <Plug>(incsearch-nohl-g#)
-"" }}}
+  let g:incsearch#auto_nohlsearch = 1
+  map n  <Plug>(incsearch-nohl-n)
+  map N  <Plug>(incsearch-nohl-N)
+  map *  <Plug>(incsearch-nohl-*)
+  map #  <Plug>(incsearch-nohl-#)
+  map g* <Plug>(incsearch-nohl-g*)
+  map g# <Plug>(incsearch-nohl-g#)
+" }}}
 
-"Plug 'haya14busa/incsearch-fuzzy.vim'
-"" {{{
-  "function! s:config_fuzzyall(...) abort
-    "return extend(copy({
-    "\   'converters': [
-    "\     incsearch#config#fuzzy#converter(),
-    "\     incsearch#config#fuzzyspell#converter()
-    "\   ],
-    "\ }), get(a:, 1, {}))
-  "endfunction
+Plug 'haya14busa/incsearch-fuzzy.vim'
+" {{{
+  function! s:config_fuzzyall(...) abort
+    return extend(copy({
+    \   'converters': [
+    \     incsearch#config#fuzzy#converter(),
+    \     incsearch#config#fuzzyspell#converter()
+    \   ],
+    \ }), get(a:, 1, {}))
+  endfunction
 
-  ""map / <Plug>(incsearch-fuzzyspell-/)
-  ""map ? <Plug>(incsearch-fuzzyspell-?)
-  "map g/ <Plug>(incsearch-fuzzyspell-stay)
-  ""noremap <silent><expr> / incsearch#go(<SID>config_fuzzyall())
-  ""noremap <silent><expr> ? incsearch#go(<SID>config_fuzzyall({'command': '?'}))
-  ""noremap <silent><expr> g? incsearch#go(<SID>config_fuzzyall({'is_stay': 1}))
-"" }}}
+  "map / <Plug>(incsearch-fuzzyspell-/)
+  "map ? <Plug>(incsearch-fuzzyspell-?)
+  map g/ <Plug>(incsearch-fuzzyspell-stay)
+  "noremap <silent><expr> / incsearch#go(<SID>config_fuzzyall())
+  "noremap <silent><expr> ? incsearch#go(<SID>config_fuzzyall({'command': '?'}))
+  "noremap <silent><expr> g? incsearch#go(<SID>config_fuzzyall({'is_stay': 1}))
+" }}}
 
-"Plug 'haya14busa/incsearch-easymotion.vim'
-"" {{{
-  "function! s:config_easyfuzzymotion(...) abort
-    "return extend(copy({
-    "\   'converters': [
-    "\     incsearch#config#fuzzy#converter(),
-    "\     incsearch#config#fuzzyspell#converter()
-    "\   ],
-    "\   'modules': [incsearch#config#easymotion#module({'overwin': 1})],
-    "\   'keymap': {"\<CR>": '<Over>(easymotion)'},
-    "\   'is_expr': 0,
-    "\   'is_stay': 1
-    "\ }), get(a:, 1, {}))
-  "endfunction
+Plug 'haya14busa/incsearch-easymotion.vim'
+" {{{
+  function! s:config_easyfuzzymotion(...) abort
+    return extend(copy({
+    \   'converters': [
+    \     incsearch#config#fuzzy#converter(),
+    \     incsearch#config#fuzzyspell#converter()
+    \   ],
+    \   'modules': [incsearch#config#easymotion#module({'overwin': 1})],
+    \   'keymap': {"\<CR>": '<Over>(easymotion)'},
+    \   'is_expr': 0,
+    \   'is_stay': 1
+    \ }), get(a:, 1, {}))
+  endfunction
 
-  "noremap <silent><expr> z/ incsearch#go(<SID>config_easyfuzzymotion())
-"" }}}
+  noremap <silent><expr> z/ incsearch#go(<SID>config_easyfuzzymotion())
+" }}}
 
 Plug 'neomake/neomake'
 " {{{

@@ -10,8 +10,8 @@ runtime macros/matchit.vim
 let mapleader = ","
 set hidden
 
-call plug#begin('~/.config/nvim/plugged')
 
+call plug#begin('~/.config/nvim/plugged')
 " Nerdtree
 Plug 'scrooloose/nerdtree'
 " {{{
@@ -23,7 +23,7 @@ Plug 'scrooloose/nerdtree'
 " }}}
 
 Plug 'jistr/vim-nerdtree-tabs'
-Plug 'taiansu/nerdtree-ag'
+"Plug 'taiansu/nerdtree-ag'
 
 " Git
 Plug 'tpope/vim-fugitive'
@@ -31,6 +31,8 @@ Plug 'shumphrey/fugitive-gitlab.vim'
 " {{{
 let g:fugitive_gitlab_domains = ['http://gitlab.pitechplus.com']
 " }}}
+
+" GIT
 Plug 'airblade/vim-gitgutter'
 " {{{
   let g:gitgutter_sign_added = '+'
@@ -52,6 +54,7 @@ let g:NERDTreeIndicatorMapCustom = {
     \ "Unknown"   : "?"
     \ }
 " }}}
+
 
 " Comments
 Plug 'scrooloose/nerdcommenter'
@@ -107,17 +110,16 @@ Plug 'tpope/vim-rails'
   command! Econfig :e ~/.config/nvim/init.vim
 " }}}
 
-Plug 'tpope/vim-surround'
 Plug 'ecomba/vim-ruby-refactoring'
 Plug 'tpope/vim-bundler'
-
-" Moving to the parent node ( :YamlGoToParent ),
-" Getting the full path to the current element ( :YamlGetFullPath ),
-" Moving to an element, given the path ( :YamlGoToKey )
-Plug 'lmeijvogel/vim-yaml-helper'
 Plug 'refactor-rails.vim'
 " custom text object for selecting ruby blocks.
 Plug 'kana/vim-textobj-user' | Plug 'nelstrom/vim-textobj-rubyblock'
+
+"
+" Editing support
+"
+Plug 'tpope/vim-surround'
 
 " This plug-in provides automatic closing of quotes, parenthesis, brackets, etc.,
 Plug 'Raimondi/delimitMate'
@@ -162,21 +164,6 @@ Plug 'AndrewRadev/splitjoin.vim'
   nmap <Leader>j :SplitjoinJoin<CR>
 " }}}
 
-
-" Vim script for text filtering and alignment
-Plug 'godlygeek/tabular'
-
-" repeat.vim: enable repeating supported plugin maps with "."
-Plug 'tpope/vim-repeat'
-
-" abolish.vim: easily search for, substitute, and abbreviate multiple variants
-" of a word
-Plug 'tpope/vim-abolish'
-
-" front for ag, A.K.A. the_silver_searcher.
-" Plug 'rking/ag.vim'
-Plug 'albfan/ag.vim'
-
 " Motions
 Plug 'camelcasemotion'
 " {{{
@@ -194,23 +181,32 @@ Plug 'easymotion/vim-easymotion'
 map  <Leader>w <Plug>(easymotion-bd-w)
 nmap <Leader>w <Plug>(easymotion-overwin-w)
 " }}}
+" Vim script for text filtering and alignment
+Plug 'godlygeek/tabular'
+
+" repeat.vim: enable repeating supported plugin maps with "."
+Plug 'tpope/vim-repeat'
+
+" abolish.vim: easily search for, substitute, and abbreviate multiple variants
+" of a word
+Plug 'tpope/vim-abolish'
+
+" front for ag, A.K.A. the_silver_searcher.
+" Plug 'rking/ag.vim'
+Plug 'albfan/ag.vim'
+
+" Moving to the parent node ( :YamlGoToParent ),
+" Getting the full path to the current element ( :YamlGetFullPath ),
+" Moving to an element, given the path ( :YamlGoToKey )
+Plug 'lmeijvogel/vim-yaml-helper'
 
 " Syntax files
 Plug 'aklt/plantuml-syntax'
 Plug 'pangloss/vim-javascript'
-Plug 'yaymukund/vim-rabl'
-Plug 'slim-template/vim-slim'
+Plug 'isRuslan/vim-es6'
 Plug 'plasticboy/vim-markdown'
-Plug 'kchmck/vim-coffee-script'
-Plug 'groenewege/vim-less'
-Plug 'elixir-lang/vim-elixir'
-Plug 'solarnz/thrift.vim'
 Plug 'rhysd/vim-crystal'
 Plug 'ekalinin/Dockerfile.vim'
-" jade
-Plug 'digitaltoad/vim-pug'
-Plug 'isRuslan/vim-es6'
-Plug 'wlangstroth/vim-racket'
 
 " NeoVim/Vim plugin performing project-wide async search and replace, similar to SublimeText, Atom et al.
 Plug 'eugen0329/vim-esearch'
@@ -304,12 +300,6 @@ Plug 'osyo-manga/vim-over'
 map <Leader>r # :OverCommandLine %s/\(<c-r>/\)/\1<CR>
 " }}
 
-" .alma>li
-Plug 'mattn/emmet-vim'
-
-" increment dates
-Plug 'tpope/vim-speeddating'
-
 Plug 'AndrewRadev/sideways.vim'
 " {{
 nnoremap <c-h> :SidewaysLeft<cr>
@@ -330,12 +320,6 @@ Plug 'brooth/far.vim'
 
 " Format JSON
 com! FormatJSON %!python -m json.tool
-
-" pandoc table style
-let g:table_mode_corner_corner='+'
-
-Plug 'dhruvasagar/vim-table-mode'
-
 call plug#end()
 
 " Settings
@@ -358,10 +342,6 @@ set backspace=indent,eol,start
 " the same indent as the line you're currently on. Useful for READMEs, etc.
 set autoindent
 
-" Display the cursor position on the last line of the screen or in the status
-" line of a window
-set ruler
-
 " Instead of failing a command because of unsaved changes, instead raise a
 " dialogue asking if you wish to save changed files.
 set confirm
@@ -380,8 +360,6 @@ set number
 " Use <F12> to toggle between 'paste' and 'nopaste'
 set pastetoggle=<F12>
 
-set nobackup
-set nowritebackup
 set history=500		" keep 500 lines of command line history
 set incsearch		" do incremental searching
 
@@ -490,3 +468,7 @@ function! AppendModeline()
   call append(line("$"), l:modeline)
 endfunction
 nnoremap <silent> <Leader>ml :call AppendModeline()<CR>
+
+" report
+nmap <F10> :! ./build.sh<CR>
+

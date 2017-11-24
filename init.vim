@@ -318,6 +318,8 @@ let g:deoplete#enable_at_startup = 1
 " like IntelliJ and Eclipse, that provide cozy tools for such tasks.
 Plug 'brooth/far.vim'
 
+Plug 'dhruvasagar/vim-table-mode'
+
 " Format JSON
 com! FormatJSON %!python -m json.tool
 call plug#end()
@@ -470,5 +472,5 @@ endfunction
 nnoremap <silent> <Leader>ml :call AppendModeline()<CR>
 
 " report
-nmap <F10> :! ./build.sh<CR>
+nmap <F10> :! make<CR>
 

@@ -112,7 +112,7 @@ Plug 'tpope/vim-rails'
 
 Plug 'ecomba/vim-ruby-refactoring'
 Plug 'tpope/vim-bundler'
-Plug 'refactor-rails.vim'
+Plug 'vim-scripts/refactor-rails.vim'
 " custom text object for selecting ruby blocks.
 Plug 'kana/vim-textobj-user' | Plug 'nelstrom/vim-textobj-rubyblock'
 
@@ -165,7 +165,7 @@ Plug 'AndrewRadev/splitjoin.vim'
 " }}}
 
 " Motions
-Plug 'camelcasemotion'
+Plug 'vim-scripts/camelcasemotion'
 " {{{
   map w <Plug>CamelCaseMotion_w
   map b <Plug>CamelCaseMotion_b

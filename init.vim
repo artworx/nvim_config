@@ -280,6 +280,16 @@ Plug 'neomake/neomake'
   autocmd! BufWritePost * Neomake
   autocmd! BufWritePost *.plantuml Neomake!
 " }}}
+"
+augroup my_neomake_signs
+    au!
+    autocmd ColorScheme *
+        \ hi NeomakeErrorSign ctermfg=white |
+        \ hi NeomakeWarningSign ctermfg=yellow |
+        \ hi NeomakeError cterm=underline ctermfg=red |
+        \ hi NeomakeWarning cterm=underline ctermfg=yellow
+
+augroup END
 
 Plug 'ludovicchabant/vim-gutentags'
 " {{{
@@ -319,6 +329,8 @@ let g:deoplete#enable_at_startup = 1
 Plug 'brooth/far.vim'
 
 Plug 'dhruvasagar/vim-table-mode'
+
+Plug 'dleonard0/pony-vim-syntax'
 
 " Format JSON
 com! FormatJSON %!python -m json.tool
@@ -447,7 +459,8 @@ hi ESearchMatch cterm=underline ctermfg=red ctermbg=black
 
 " spell
 hi clear SpellBad
-hi SpellBad cterm=underline ctermfg=yellow
+hi SpellBad cterm=underline ctermfg=red
+hi SpellCap cterm=underline ctermfg=yellow
 
 " NERDTress Git File highlighting
 " with Xuyuanp/nerdtree-git-plugin

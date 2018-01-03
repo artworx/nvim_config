@@ -20,6 +20,7 @@ Plug 'scrooloose/nerdtree'
   " Automatically close NERDTree when opening a file
   let NERDTreeQuitOnOpen=1
   let NERDTreeAutoDeleteBuffer = 1
+  let NERDTreeShowHidden=1
 " }}}
 
 Plug 'jistr/vim-nerdtree-tabs'
@@ -27,6 +28,7 @@ Plug 'jistr/vim-nerdtree-tabs'
 
 " Git
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
 Plug 'shumphrey/fugitive-gitlab.vim'
 " {{{
 let g:fugitive_gitlab_domains = ['http://gitlab.pitechplus.com']
@@ -331,6 +333,8 @@ Plug 'brooth/far.vim'
 Plug 'dhruvasagar/vim-table-mode'
 
 Plug 'dleonard0/pony-vim-syntax'
+
+Plug 'hashivim/vim-hashicorp-tools'
 
 " Format JSON
 com! FormatJSON %!python -m json.tool

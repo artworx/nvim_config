@@ -330,6 +330,10 @@ let g:deoplete#enable_at_startup = 1
 " like IntelliJ and Eclipse, that provide cozy tools for such tasks.
 Plug 'brooth/far.vim'
 
+" {{{
+" Markdown-compatible tables
+let g:table_mode_corner='|'
+" }}
 Plug 'dhruvasagar/vim-table-mode'
 
 Plug 'dleonard0/pony-vim-syntax'

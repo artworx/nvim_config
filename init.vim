@@ -156,6 +156,25 @@ Plug 'majutsushi/tagbar'
         \ 'F:singleton methods'
         \ ]
         \ }
+
+" add in ~/.ctags
+" --langdef=terraform
+" --langmap=terraform:.tf.tfvars
+" --regex-terraform=/^resource "(.+)" "(.+)"/\1 \2/r,resources/
+" --regex-terraform=/^variable "(.+)"/\1/v,variables/
+" --regex-terraform=/^module "(.+)"/\1/m,modules/
+" --regex-terraform=/^output "(.+)"/\1/o,outputs/
+" --regex-terraform=/^([a-z0-9_]+) =/\1/f,tfvars
+  let g:tagbar_type_terraform = {
+    \ 'ctagstype' : 'terraform',
+    \ 'kinds'     : [
+        \ 'r:resource',
+        \ 'v:variables',
+        \ 'm:modules',
+        \ 'o:outputs',
+        \ 'f:tfvars'
+    \ ]
+    \ }
 " }}}
 
 " A vim plugin that simplifies the transition between multiline and

@@ -522,3 +522,7 @@ nnoremap <silent> <Leader>ml :call AppendModeline()<CR>
 " report
 nmap <F10> :! make<CR>
 
+
+" preview on search and replace
+set inccommand=split
+

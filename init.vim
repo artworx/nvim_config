@@ -367,6 +367,8 @@ Plug 'dleonard0/pony-vim-syntax'
 
 Plug 'hashivim/vim-hashicorp-tools'
 
+Plug 'gyim/vim-boxdraw'
+
 " Format JSON
 com! FormatJSON %!python -m json.tool
 call plug#end()

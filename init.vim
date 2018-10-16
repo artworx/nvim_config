@@ -42,21 +42,6 @@ Plug 'airblade/vim-gitgutter'
   let g:gitgutter_sign_removed = '-'
   let g:gitgutter_sign_modified_removed = '<'
 " }}}
-Plug 'Xuyuanp/nerdtree-git-plugin'
-" {{{
-let g:NERDTreeIndicatorMapCustom = {
-    \ "Modified"  : "!",
-    \ "Staged"    : "+",
-    \ "Untracked" : "+",
-    \ "Renamed"   : "M",
-    \ "Unmerged"  : "!",
-    \ "Deleted"   : "!",
-    \ "Dirty"     : "!",
-    \ "Clean"     : "+",
-    \ "Unknown"   : "?"
-    \ }
-" }}}
-
 
 " Comments
 Plug 'scrooloose/nerdcommenter'
@@ -227,6 +212,8 @@ Plug 'albfan/ag.vim'
 " Moving to the parent node ( :YamlGoToParent ),
 " Getting the full path to the current element ( :YamlGetFullPath ),
 " Moving to an element, given the path ( :YamlGoToKey )
+let g:vim_yaml_helper#auto_display_path = 1
+
 Plug 'lmeijvogel/vim-yaml-helper'
 
 " Syntax files
@@ -251,6 +238,11 @@ let g:esearch = {
 
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+"{{{
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+"}}}
 
 Plug 'haya14busa/incsearch.vim'
 " {{{
@@ -304,33 +296,33 @@ Plug 'haya14busa/incsearch-easymotion.vim'
   noremap <silent><expr> z/ incsearch#go(<SID>config_easyfuzzymotion())
 " }}}
 
-Plug 'neomake/neomake'
-" {{{
-  autocmd! BufWritePost * Neomake
-  autocmd! BufWritePost *.plantuml Neomake!
-" }}}
-"
-augroup my_neomake_signs
-    au!
-    autocmd ColorScheme *
-        \ hi NeomakeErrorSign ctermfg=white |
-        \ hi NeomakeWarningSign ctermfg=yellow |
-        \ hi NeomakeError cterm=underline ctermfg=red |
-        \ hi NeomakeWarning cterm=underline ctermfg=yellow
+"Plug 'neomake/neomake'
+"" {{{
+  "autocmd! BufWritePost * Neomake
+  "autocmd! BufWritePost *.plantuml Neomake!
+"" }}}
+""
+"augroup my_neomake_signs
+    "au!
+    "autocmd ColorScheme *
+        "\ hi NeomakeErrorSign ctermfg=white |
+        "\ hi NeomakeWarningSign ctermfg=yellow |
+        "\ hi NeomakeError cterm=underline ctermfg=red |
+        "\ hi NeomakeWarning cterm=underline ctermfg=yellow
 
-augroup END
+"augroup END
 
-Plug 'ludovicchabant/vim-gutentags'
-" {{{
-  let g:gutentags_ctags_exclude = [
-      \ '*.min.js',
-      \ '*html*',
-      \ 'jquery*.js',
-      \ '*/vendor/*',
-      \ '*/node_modules/*',
-      \ '*/migrate/*.rb'
-      \ ]
-" }}}
+"Plug 'ludovicchabant/vim-gutentags'
+"" {{{
+  "let g:gutentags_ctags_exclude = [
+      "\ '*.min.js',
+      "\ '*html*',
+      "\ 'jquery*.js',
+      "\ '*/vendor/*',
+      "\ '*/node_modules/*',
+      "\ '*/migrate/*.rb'
+      "\ ]
+"" }}}
 
 Plug 'mattn/webapi-vim'
 Plug 'mattn/gist-vim'
@@ -368,6 +360,11 @@ Plug 'dleonard0/pony-vim-syntax'
 Plug 'hashivim/vim-hashicorp-tools'
 
 Plug 'gyim/vim-boxdraw'
+
+Plug 'elorest/vim-slang'
+
+Plug 'w0rp/ale'
+let g:ale_completion_enabled = 1
 
 " Format JSON
 com! FormatJSON %!python -m json.tool
@@ -501,13 +498,14 @@ hi SpellCap cterm=underline ctermfg=yellow
 
 " NERDTress Git File highlighting
 " with Xuyuanp/nerdtree-git-plugin
-function! NERDTreeHighlightFile(syn_match, m, fg, cterm)
- exec 'autocmd filetype nerdtree highlight ' . a:syn_match .' cterm='. a:cterm .' ctermfg='. a:fg
- exec 'autocmd filetype nerdtree syn match ' . a:syn_match .' #.*\[' . a:m . '\].*#'
-endfunction
 
-call NERDTreeHighlightFile('NERDTreeGitStatusModified', '!', '39', 'none')
-call NERDTreeHighlightFile('NERDTreeGitStatusUntracked', '+', '154', 'none')
+"function! NERDTreeHighlightFile(syn_match, m, fg, cterm)
+ "exec 'autocmd filetype nerdtree highlight ' . a:syn_match .' cterm='. a:cterm .' ctermfg='. a:fg
+ "exec 'autocmd filetype nerdtree syn match ' . a:syn_match .' #.*\[' . a:m . '\].*#'
+"endfunction
+
+"call NERDTreeHighlightFile('NERDTreeGitStatusModified', '!', '39', 'none')
+"call NERDTreeHighlightFile('NERDTreeGitStatusUntracked', '+', '154', 'none')
 
 
 " Append modeline after last line in buffer.
@@ -528,3 +526,5 @@ nmap <F10> :! make<CR>
 " preview on search and replace
 set inccommand=split
 
+set ttyfast
+set lazyredraw

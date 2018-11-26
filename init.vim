@@ -124,6 +124,7 @@ Plug 'ivalkeen/vim-ctrlp-tjump'
 " better-looking, more functional vim statuslines
 let g:airline_extensions = []
 Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 " sidebar that displays the ctags-generated tags of the current file
 Plug 'majutsushi/tagbar'
@@ -368,6 +369,9 @@ let g:ale_completion_enabled = 1
 
 " Format JSON
 com! FormatJSON %!python -m json.tool
+
+Plug 'NLKNguyen/papercolor-theme'
+
 call plug#end()
 
 " Settings
@@ -476,7 +480,24 @@ set backupdir=~/.vim/backup//
 set directory=~/.vim/tmp//
 
 " Colors
-colorscheme vividchalk
+" colorscheme vividchalk
+
+set t_Co=256
+
+let g:PaperColor_Theme_Options = {
+  \   'theme': {
+  \     'default.light': {
+  \       'override' : {
+  \         'color00' : ['#ffffff', '15'],
+  \       }
+  \     }
+  \   }
+  \ }
+
+set background=light
+
+colorscheme PaperColor
+let g:airline_theme='papercolor'
 
 hi GitGutterAdd      ctermfg=0 ctermbg=2 guibg='green'
 hi GitGutterDelete   ctermfg=0 ctermbg=1 guibg='red'

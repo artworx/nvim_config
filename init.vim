@@ -505,11 +505,11 @@ hi GitGutterChange   ctermfg=0 ctermbg=4 guibg='blue'
 
 " highlight search term
 " hi Search cterm=NONE ctermfg=black ctermbg=white
-hi Search cterm=underline ctermfg=red ctermbg=black
-hi IncSearch cterm=underline ctermfg=red ctermbg=black
+hi Search cterm=underline ctermfg=red ctermbg=yellow
+hi IncSearch cterm=underline ctermfg=red ctermbg=yellow
 
 " Easech
-hi ESearchMatch cterm=underline ctermfg=red ctermbg=black
+hi ESearchMatch cterm=underline ctermfg=red ctermbg=yellow
 "hi ESearchMatch ctermfg=black ctermbg=white guifg=#000000 guibg=#E6E6FA
 
 " spell

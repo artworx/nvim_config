@@ -488,7 +488,7 @@ let g:PaperColor_Theme_Options = {
   \   'theme': {
   \     'default.light': {
   \       'override' : {
-  \         'color00' : ['#ffffff', '15'],
+  \         'color00' : ['#ffffff', '231'],
   \       }
   \     }
   \   }

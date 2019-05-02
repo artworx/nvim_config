@@ -317,11 +317,11 @@ Plug 'haya14busa/incsearch-easymotion.vim'
   noremap <silent><expr> z/ incsearch#go(<SID>config_easyfuzzymotion())
 " }}}
 
-"Plug 'neomake/neomake'
-"" {{{
-  "autocmd! BufWritePost * Neomake
-  "autocmd! BufWritePost *.plantuml Neomake!
-"" }}}
+Plug 'neomake/neomake'
+" {{{
+  autocmd! BufWritePost * Neomake
+  autocmd! BufWritePost *.plantuml Neomake!
+" }}}
 ""
 "augroup my_neomake_signs
     "au!

@@ -244,6 +244,8 @@ Plug 'isRuslan/vim-es6'
 Plug 'plasticboy/vim-markdown'
 Plug 'rhysd/vim-crystal'
 Plug 'ekalinin/Dockerfile.vim'
+Plug 'leafgarland/typescript-vim'
+Plug 'towolf/vim-helm'
 
 " NeoVim/Vim plugin performing project-wide async search and replace, similar to SublimeText, Atom et al.
 Plug 'eugen0329/vim-esearch'

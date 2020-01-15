@@ -394,6 +394,7 @@ com! FormatJSON %!python -m json.tool
 
 Plug 'NLKNguyen/papercolor-theme'
 
+Plug 'tommcdo/vim-fubitive'
 call plug#end()
 
 " Settings
